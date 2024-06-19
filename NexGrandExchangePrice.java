@@ -8,11 +8,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class NexGrandExchangePrice {
-	
-	private static final String OSRS_URL = "https://secure.runescape.com/m=itemdb_oldschool/api/catalogue/detail.json?item=";
-	private static final int BILLION = 1_000_000_000, MILLION = 1_000_000, THOUSAND = 1_000;
-	private static HashMap<Integer, Integer> cache = new HashMap<>();
-	private static final Logger LOGGER = Logger.getLogger(NexGrandExchangePrice.class.getName());
+
+    private static final String OSRS_URL = "https://secure.runescape.com/m=itemdb_oldschool/api/catalogue/detail.json?item=";
+    private static final int BILLION = 1_000_000_000, MILLION = 1_000_000, THOUSAND = 1_000;
+    private static HashMap<Integer, Integer> cache = new HashMap<>();
+    private static final Logger LOGGER = Logger.getLogger(NexGrandExchangePrice.class.getName());
 
     public static int price(final int id) {
         int price = -1;
