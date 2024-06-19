@@ -18,7 +18,6 @@ public static void main(String[] args) {
 }
 ```
 Output:
->[NexGrandExchangePrice] Added 556 to local cache with price: 4 <br>
+>[NexGrandExchangePrice] Added 556 to local cache with value: 4 <br>
 Air rune price: 4 <br>
-[NexGrandExchangePrice] Found 556 in local cache with price: 4 <br>
 Air rune cache price: 4 <br>
