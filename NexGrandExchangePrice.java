@@ -2,8 +2,6 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.HashMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -12,19 +10,13 @@ public class NexGrandExchangePrice {
     private static final String OSRS_URL = "https://secure.runescape.com/m=itemdb_oldschool/api/catalogue/detail.json?item=";
     private static final int BILLION = 1_000_000_000, MILLION = 1_000_000, THOUSAND = 1_000;
     private static HashMap<Integer, Integer> cache = new HashMap<>();
-    private static final Logger LOGGER = Logger.getLogger(NexGrandExchangePrice.class.getName());
 
     public static int price(final int id) {
-        int price = -1;
-        if (cache.containsKey(id)) {
-            price = cache.get(id);
-            System.out.println("[NexGrandExchangePrice] Found " + id + " in local cache with price: " + price);
-        } else {
-            price = getPrice(id);
-            cache.put(id, price);
-            System.out.println("[NexGrandExchangePrice] Added " + id + " to local cache with price: " + price);
-        }
-        return price;
+        return cache.computeIfAbsent(id, key -> {
+            int price = getPrice(key);
+            System.out.println("[NexGrandExchangePrice] Added " + key + " to local cache with value: " + price);
+            return price;
+        });
     }
 
     public static void resetCache() {
